@@ -3,6 +3,7 @@ from rolepermissions.decorators import has_role_decorator
 from ong.forms import ProjectForm
 from authentication.forms import RegisterForm
 from rolepermissions.roles import assign_role
+from perfil.models import VoluntaryProjectJunction
 # Create your views here.
 
 def ong_admin_view(request):
@@ -42,8 +43,18 @@ def register_admin(request):
                     )
 
 
+def show_projects_to_approve(request):
+    projects_to_approve = VoluntaryProjectJunction.objects.filter(approved == False)
+    #TODO: nao sei oq renderizar aqui
+    return render(request, '.html', {'projects_to_approve':projects_to_approve})
+    
+        
 def confirm_voluntary_participation(request):
-    pass
+    project = request.GET.get('project')
+    voluntary = request.GET.get('voluntary')
+    project_to_approve = VoluntaryProjectJunction.objects.filter('project'==project).filter('voluntary'==voluntary)
+    project_to_approve.approved = True
+    project_to_approve.save()
 
 
 def register_expenses(request):
