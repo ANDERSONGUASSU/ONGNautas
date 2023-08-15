@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.contrib.messages import constants
 
 def index_view(request):
-    return render(request, 'index.html')
+    user = request.user
+    return render(request, 'index.html', {'username':user.username, 'email':user.email})
 
 
 def voluntary_view(request):
