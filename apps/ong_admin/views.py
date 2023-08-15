@@ -44,7 +44,7 @@ def register_admin(request):
 
 
 def show_projects_to_approve(request):
-    projects_to_approve = VoluntaryProjectJunction.objects.filter(approved == False)
+    projects_to_approve = VoluntaryProjectJunction.objects.filter(approved = False)
     #TODO: nao sei oq renderizar aqui
     return render(request, '.html', {'projects_to_approve':projects_to_approve})
     
@@ -52,7 +52,7 @@ def show_projects_to_approve(request):
 def confirm_voluntary_participation(request):
     project = request.GET.get('project')
     voluntary = request.GET.get('voluntary')
-    project_to_approve = VoluntaryProjectJunction.objects.filter('project'==project).filter('voluntary'==voluntary)
+    project_to_approve = VoluntaryProjectJunction.objects.filter(project=project).filter(voluntary=voluntary)
     project_to_approve.approved = True
     project_to_approve.save()
 
