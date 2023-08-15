@@ -26,6 +26,7 @@ def register_projects(request):
                     )
 
 
+@has_role_decorator('admin')
 def register_admin(request):
     if request.method == 'POST':
         register_form = RegisterForm(request.POST)
@@ -49,6 +50,7 @@ def show_projects_to_approve(request):
     return render(request, '.html', {'projects_to_approve':projects_to_approve})
     
         
+@has_role_decorator('admin')
 def confirm_voluntary_participation(request):
     project = request.GET.get('project')
     voluntary = request.GET.get('voluntary')
@@ -57,5 +59,6 @@ def confirm_voluntary_participation(request):
     project_to_approve.save()
 
 
+@has_role_decorator('admin')
 def register_expenses(request):
     pass
