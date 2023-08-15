@@ -4,54 +4,12 @@
 {% for post in posts %}
 <div class="col-md-6 col-lg-4">
     <div class="block-blog text-left">
-        <a href="#"><img src="{% static 'ong/img/blog/blog-1.jpg' %}" class="card-img-top" alt="img"></a>
+        <a href="#"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
         <div class="content-blog">
             <h4><a href="#">{{ post.title }}</a></h4>
-            <span>{{ post.date }}</span>
-            <a class="float-end btn m-5" name="" id="" href="#" role="button">Saiba Mais</a>
+            <span>{{ post.date }}</span> <br>
+            <a class="float-end btn m-5" href="{% url 'blog_show' post.id %}" role="button">Saiba Mais</a>
         </div>
     </div>
 </div>
 {% endfor %}
-<div class="col-md-6 col-lg-4">
-    <div class="block-blog text-left">
-        <a href="#"><img src="{% static 'ong/img/blog/blog-2.jpg' %}" class="img-responsive" alt="img"></a>
-        <div class="content-blog">
-            <h4><a href="#">Planeta Sustentável: Descubra como os ONGNautas estão fazendo a diferença</a></h4>
-            <span>01, ago 2023</span>
-            <a class="float-end btn m-5" name="" id="" href="#" role="button">Saiba Mais</a>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-6 col-lg-4">
-    <div class="block-blog text-left">
-        <a href="#"><img src="{% static 'ong/img/blog/blog-3.jpg' %}" class="img-responsive" alt="img"></a>
-        <div class="content-blog">
-            <h4><a href="#">Explorando a Natureza: As melhores trilhas ecológicas com os ONGNautas</a></h4>
-            <span>01, ago 2023</span>
-            <a class="float-end btn m-5" name="" id="" href="#" role="button">Saiba Mais</a>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-4">
-    <div class="block-blog text-left">
-        <a href="#"><img src="{% static 'ong/img/blog/blog-2.jpg' %}" class="img-responsive" alt="img"></a>
-        <div class="content-blog">
-            <h4><a href="#">Planeta Sustentável: Descubra como os ONGNautas estão fazendo a diferença</a></h4>
-            <span>01, ago 2023</span>
-            <a class="float-end btn m-5" name="" id="" href="#" role="button">Saiba Mais</a>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-6 col-lg-4">
-    <div class="block-blog text-left">
-        <a href="#"><img src="{% static 'ong/img/blog/blog-3.jpg' %}" class="img-responsive" alt="img"></a>
-        <div class="content-blog">
-            <h4><a href="#">Explorando a Natureza: As melhores trilhas ecológicas com os ONGNautas</a></h4>
-            <span>01, ago 2023</span>
-            <a class="float-end btn m-5" name="" id="" href="#" role="button">Saiba Mais</a>
-        </div>
-    </div>
-</div>

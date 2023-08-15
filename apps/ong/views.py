@@ -3,6 +3,7 @@ from django.urls import reverse
 from .models import Post
 from .forms import PostForm, RegisterNewsletterForm, CommentsForm
 from rolepermissions.decorators import has_role_decorator
+from django.shortcuts import render, get_object_or_404
 
 from django.contrib import messages
 from django.contrib.messages import constants
@@ -12,6 +13,11 @@ def blog_view(request):
     if request.method == 'GET':
         posts = Post.objects.all()
         return render(request, 'blog.html', {'posts': posts})
+
+
+def blog_show_view(request, post_id):
+    posts = get_object_or_404(Post.objects.filter(id=post_id))
+    return render(request, 'blog_show.html', {'posts': posts})
 
 
 def home_view(request):
@@ -29,8 +35,7 @@ def create_posts(request):
         case 'POST':
             post_form = PostForm(request.POST)
             if post_form.is_valid():
-                post_form.save()
-                
+                post_form.save() 
                 messages.add_message(request, constants.SUCCESS, 'Post criado com sucesso!')
 
 
@@ -55,7 +60,6 @@ def make_comment(request):
                         constants.ERROR, 
                         'Houve algum erro. Tente novamente mais tarde.'
                     )
-        
 
 
 def newsletter_register(request):

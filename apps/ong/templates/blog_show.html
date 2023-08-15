@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block 'title' %}Home{% endblock 'title' %}
+<!-- CSS -->
+{% block 'css' %}{% static 'ong/css/blog.css' %}{% endblock 'css' %}
+
+{% block 'body' %}
+
+    <div class="container">
+        <img src="{{ posts.image.url }}" class="card-img-top" alt="{{ posts.title }}">
+        <h2>{{ posts.title }}</h2>
+        <p>{{ posts.text }}</p>
+
+    </div>
+
+<pre>
+{{ post }}
+{{ post.title }}
+{{ post.text }}
+</pre>
+
+{% endblock 'body' %}
+</body>
+</html>
