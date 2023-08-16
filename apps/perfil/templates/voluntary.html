@@ -1,0 +1,110 @@
+<!-- area de ações no perfil de voluntários -->
+{% extends "base/base_perfil.html" %}
+
+{% block title %}Perfil de Voluntário{% endblock title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'perfil/css/voluntary.css' %}">
+  <link rel="stylesheet" href="{% static 'perfil/css/index.css' %}">
+{% endblock css %}
+
+{% block scripts %}
+  
+  <script src="{% static 'perfil/js/voluntary.js' %}"></script>
+{% endblock scripts %}
+
+{% block body %}
+<!-- ações (projetos)-->
+<div class="card-group">
+  <!--card test. amanha irei fazer a renderização das ações aqui-->
+        <div class="card-actions">
+          <img
+            src="{% static 'geral/img/action-1.svg' %}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              Construção de casas Biodegradaveis
+            </h5>
+            <p class="card-text">
+              Ajude a nossa ong a reconstruir moradias para os povos indigenas 
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary"
+              >Last updated 3 months ago</small
+            >
+          </div>
+        </div>
+      </div>
+     
+      <hr class="mt-0 mb-4" />
+      <div class="row pt-1">
+        <!-- Seção de card aparecendo apenas no max 3 ações, depois disso aparecera um botão de próximo-->
+      </div>
+    </div>
+    <div>
+      <div class="category-vol-line">
+        <h6 class="category-title">Meus voluntariados</h6>
+        <button id="btn_register_action" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegisterAction">
+            Registrar Ação
+        </button>
+    </div>
+    
+     
+      <hr class="mt-0 mb-4" />
+      <div class="row pt-1">
+        <div class="">
+          <p class="text-center">
+            Voce ainda não participou de nenhuma ação!
+            Quer registrar seu ultimo volúntariado? Clique em registrar ação
+           <!--irei fazer a logica amanha if else-->
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Modal para registro de voluntário-->
+    <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="modalRegisterLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="modalRegisterActionLabel">Registrar Ação Voluntária</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- formulário para registrar a ação -->
+                  <form action="" id="formRegisterAction" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <!-- Anexo de foto -->
+                      <div class="mb-3">
+                        <label for="img" class="form-label">Anexar Foto</label>
+                        <input type="file" class="form-control" id="img" name="img">
+                      </div>
+                      <!-- Dropdown ação  -->
+                      <div class="mb-3">
+                          <label for="project" class="form-label">Escolher Ação</label>
+                          <select class="form-select" id="project" name="project">
+                              <option value="project1">Ação 1</option>
+                              <option value="project2">Ação 2</option>
+                              
+                          </select>
+                      </div>
+                      <!--  horas trabalhadas -->
+                      <div class="mb-3">
+                          <label for="hours_worked" class="form-label">Horas Trabalhadas</label>
+                          <input type="number" class="form-control" id="hours_worked" name="hours_worked">
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="send_voluntary_register">Enviar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  {% endblock body %}
