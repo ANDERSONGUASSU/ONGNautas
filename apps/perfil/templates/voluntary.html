@@ -1,6 +1,6 @@
 <!-- area de ações no perfil de voluntários -->
 {% extends "base/base_perfil.html" %}
-
+{% load static %}
 {% block title %}Perfil de Voluntário{% endblock title %}
 
 {% block css %}
@@ -13,7 +13,7 @@
   <script src="{% static 'perfil/js/voluntary.js' %}"></script>
 {% endblock scripts %}
 
-{% block body %}
+{% block 'body' %}
 <!-- ações (projetos)-->
 <div class="card-group">
   <!--card test. amanha irei fazer a renderização das ações aqui-->
@@ -107,4 +107,4 @@
       </div>
   </div>
   
-  {% endblock body %}
+  {% endblock 'body' %}
