@@ -1,18 +1,16 @@
 {% extends "base/base_perfil.html" %}
+{% load static %}
 
-{% block title %}Perfil de Apoiador{% endblock title %}
+{% block 'title' %}Perfil de Apoiador{% endblock 'title' %}
 
-{% block css %}
-  <link rel="stylesheet" href="{% static 'perfil/css/supporter.css' %}">
-  <link rel="stylesheet" href="{% static 'perfil/css/index.css' %}">
-{% endblock css %}
+{% block 'css' %}{% static 'perfil/css/index.css' %}{% endblock 'css' %}
 
 {% block scripts %}
 
 <script src="{% static 'perfil/js/supporter.js' %}"></script>
 {% endblock scripts %}
 
-{% block body %}
+{% block 'body' %}
 <div class="container-perfil-actions actions">
     <!-- Um card com as ações financeiras ja feitas por ele-->
   </div>
@@ -65,4 +63,4 @@
     </div>
 </div>
 
-{% endblock body %}
+{% endblock 'body' %}
