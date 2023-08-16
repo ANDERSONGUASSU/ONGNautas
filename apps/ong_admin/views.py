@@ -51,7 +51,7 @@ def register_admin(request):
 def show_projects_to_approve(request):
     projects_to_approve = VoluntaryProjectJunction.objects.filter(approved = False)
     #TODO: nao sei oq renderizar aqui
-    return render(request, '.html', {'projects_to_approve':projects_to_approve})
+    return render(request, 'ong_admin.html', {'projects_to_approve':projects_to_approve})
     
         
 @has_role_decorator('admin')
