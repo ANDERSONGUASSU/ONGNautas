@@ -1,0 +1,68 @@
+{% extends "base/base_perfil.html" %}
+
+{% block title %}Perfil de Apoiador{% endblock title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'perfil/css/supporter.css' %}">
+  <link rel="stylesheet" href="{% static 'perfil/css/index.css' %}">
+{% endblock css %}
+
+{% block scripts %}
+
+<script src="{% static 'perfil/js/supporter.js' %}"></script>
+{% endblock scripts %}
+
+{% block body %}
+<div class="container-perfil-actions actions">
+    <!-- Um card com as ações financeiras ja feitas por ele-->
+  </div>
+  
+  <div class="container-perfil-actions">
+    <h6 class="category-title">Registro de pagamento</h6>
+    <button id="btn_register_donation" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegisterDonation">
+      Registrar doação
+    </button>
+      <div class="btn-group">
+    
+   
+  </div>
+    
+  </div>
+  <!-- Modal para registro de voluntário-->
+  <div class="modal fade" id="modalRegisterDonation" tabindex="-1" aria-labelledby="modalRegisterDonationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalRegisterDonationLabel">Registrar Ação Voluntária</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- formulário para registrar a ação -->
+                <form action="" id="formRegisterDonation" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                   
+                    <!-- Dropdown ação  -->
+                    <div class="mb-3">
+                        <label for="project" class="form-label">Qual ação deseja doar?</label>
+                        <select class="form-select" id="project" name="project">
+                            <option value="project1">Project1</option>
+                            <option value="project2">Project2</option>
+                            
+                        </select>
+                    </div>
+                    <!-- Valor da doação -->
+                    <div class="mb-3">
+                        <label for="donation_value" class="form-label">Quanto Deseja doar?</label>
+                        <input type="number" class="form-control" id="donation_value" name="donation_value">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="send_voluntary_register">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

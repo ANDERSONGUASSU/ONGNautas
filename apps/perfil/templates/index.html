@@ -10,76 +10,83 @@
 
 {% block 'scripts' %}
 <script src="{% static 'perfil/js/scripts.js' %}"></script>
-{% endblock %} {% block 'body' %}
+{% endblock %} 
+
+{% block 'body' %}
 
 <section class="vh-100">
   <div class="container-xl py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100 ">
-      <!-- coluna do perfil de usuario com as opções que ao clicadas, serão renderiazadas ao meio do indexhtml -->
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <!-- coluna do perfil de usuário com as opções que ao serem clicadas serão renderizadas no meio do index.html -->
       <div class="col-md-12 mx-6">
         <div class="card mb-3 bg-transparent" style="border-radius: 0.5rem">
           <div class="row g-0">
             <div
-              class="aside-user col-md-4 gradient-custom text-center "
-              style="
-                border-top-left-radius: 0.5rem;
-                border-bottom-left-radius: 0.5rem;
-              "
+              class="aside-user col-md-4 gradient-custom text-center"
+              style="border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;"
             >
-            <button id="btn-voluntary" type="button" name="is_voluntary" class="aside-btn aside-link">Voluntário</button>
-            <button id="btn-supporter" type="button" name="is_supporter" class="aside-btn aside-link">Apoiador</button>
-            
-            
-              <i class="far fa-edit mb-5"></i>
+            <div class="text-center mt-4">
+              <button class="btn btn-primary" onclick="window.location.href='{% url 'voluntary' %}'">Perfil de Voluntário</button>
+              <button class="btn btn-secondary" onclick="window.location.href='{% url 'supporter' %}'">Perfil de Apoiador</button>
+            </div>          
             </div>
-            <!-- Informações do Usuario -->
+            <!-- Informações do Usuário -->
             <div class="col-md-8">
               <div class="card-body p-8">
-                <h2>Informações de <span>User</span></h2>
-
+                <h2>Informações de <span id="username">{{ user.username }}</span></h2>
                 <hr class="mt-0 mb-4" />
-
                 <div class="row pt-1">
-                    <div class="col-6 mb-3">
-                        <h6 class="midle-title">Email de Contato:</h6>
-                        <p class="midle-title">info@example.com</p>
-                      </div>
-                      <div class="col-6 mb-3">
-                        <h6 class="midle-title">Celular:</h6>
-                        <p class="midle-title">(21) 171171-171</p>
-                      </div>
-                    </div>
-                  
+                  <div class="col-6 mb-3">
+                    <h6 class="midle-title">Email de Contato:</h6>
+                    <p class="midle-title">{{ user.email }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6 class="midle-title">Endereço:</h6>
+                    <p class="midle-title">{{ user.address }}</p>
+                  </div>
                 </div>
-                <h6 class="category-title">Ações</h6>
-                <!-- Incluindo o partial de acordo com a opção do usuário -->
-                {% if is_voluntary and not is_supporter %}
-                  <div class="container-perfil-actions">
-                    <div id="actions-voluntary" class="actions">
-                        {% include 'partials/voluntary.html' %}
-                    </div>      
+              </div>
+            </div>
 
-                    
-                    <h6 class="category-title">Minhas ações</h6>
-                {% elif is_supporter and not is_voluntary %}
+            <div class="col-md-8">
+              <div class="card-body p-8">
+                {% block profile_choice %}
+                {% if is_voluntary and not is_supporter %}
+                <!-- Ações de Voluntários -->
+                <div class="container-perfil-actions">
+                  <div id="actions-voluntary" class="actions">
+                    <p>Estamos sem ação no momento</p>
+                    <!-- Partial de voluntários -->
+                    {% include 'partials/voluntary.html' %}
+                  </div>
+                </div>
+                {% endif %}
+                {% if is_supporter and not is_voluntary %}
+                <!-- Ações de Apoiadores -->
                 <div class="container-perfil-actions">
                   <div id="actions-supporter" class="actions">
-                      
-                      {% include 'partials/supporter.html' %}
+                    <p>Estamos sem ação no momento</p>
+                    <!-- Partial de apoiadores (doações) -->
+                    {% include 'partials/supporter.html' %}
                   </div>
-              </div>
-
-                {% elif is_voluntary and is_supporter %}                
-                <div class="container-perfil-actions">
-                  <div class="actions">
-                      <h6 class="category-title">Ações</h6>
-                      {% include 'partials/voluntary.html' %}
-                  </div> 
-                  <div class="actions">
-                    <h6 class="category-title">Ações</h6>
-                  {% include 'partials/supporter.html' %}  
+                </div>
                 {% endif %}
-               
+                {% if is_voluntary and is_supporter %}
+                <!-- Ações de Ambos -->
+                <div class="container-perfil-actions">
+                  <div id="actions-voluntary" class="actions">
+                    <p>Estamos sem ação no momento</p>
+                    <!-- Partial de voluntários -->
+                    {% include 'partials/voluntary.html' %}
+                  </div>
+                  <div id="actions-supporter" class="actions">
+                    <p>Estamos sem ação no momento</p>
+                    <!-- Partial de apoiadores (doações) -->
+                    {% include 'partials/supporter.html' %}
+                  </div>
+                </div>
+                {% endif %}
+                {% endblock %}
               </div>
             </div>
           </div>
