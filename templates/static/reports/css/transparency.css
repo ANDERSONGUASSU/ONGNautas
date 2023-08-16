@@ -1,6 +1,18 @@
 .card {
-    background-color: #009933;
+  background-image: linear-gradient(
+    to left bottom,
+    #00a651,
+    #3baf4c,
+    #5ab748,
+    #74bf43,
+    #8dc63f
+  );
+  color: #fff;
+  box-shadow: 10px 10px 10px rgba(0, 100, 0, 0.5); 
+  }
+  .card h2{
     color: #fff;
+    
   }
 
 .rounded-circle {
@@ -18,3 +30,8 @@
     text-align: center;
     padding: 1rem;
   }
+.graphic{
+  width: 800px;
+  height: 400px;
+  margin-left: 0;
+}
