@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load static %}
+{% load cache %}
 {% block 'title' %}Home{% endblock 'title' %}
 <!-- CSS -->
 {% block 'css' %}{% static 'ong/css/home.css' %}{% endblock 'css' %}
@@ -16,16 +17,16 @@
                         <p class="paragrapher">A ONGNautas é uma organização empenhada na conservação e proteção do meio ambiente, especialmente em praias e cidades. Movidos pela conexão profunda entre a humanidade e esses ambientes, eles se dedicam a garantir um futuro sustentável para essas áreas. Através de ações de conscientização, educação e denúncia, a ONGNautas trabalha incansavelmente para enfrentar problemas como a poluição, a degradação e outras ameaças aos ecossistemas.</p>
                         <button name="btn-actions" class="btn-actions">AÇÔES</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </section>
     <section>
         <section></section>
-        
+
     </section>
-    
+
     <section class="py-5" id="about-us">
         <div class="container">
             <h3 class="section-title text-center">Quem Somos?</h3>
@@ -45,11 +46,13 @@
                         </p>
                     <button name="btn-blog mb-4" class="btn-main ">Conheça o Blog</button>
                 </div>
-            </div> 
+            </div>
                 <!-- Linha vertical -->
                 <div class="d-flex" style="height: 200px;">
                     <div class="vr bg-primary"></div>
                 </div>
+
+                {% cache 3600 about_sidebar %}
 
                 <div class="col-lg-3 d-flex align-items-center justify-content-center  ">
                     <div>
@@ -69,6 +72,9 @@
                         </div>
                     </div>
                 </div>
+
+                {% endcache %}
+
             </div>
         </div>
     </section>
@@ -80,6 +86,8 @@
 
             <div class="row ml-4 ">
                 <div class="col-lg-6 d-flex align-items-center justify-content-center photos-container my-8">
+
+                    {% cache 3600 volunteer_sidebar %}
                     <div>
                         <div class="photo ">
                             <img src="{% static 'ong/img/about-voluntarys/voluntaryft1.svg' %}" alt="Foto 1">
@@ -96,11 +104,12 @@
                             <img src="{% static 'ong/img/about-voluntarys/voluntaryft4.svg' %}" alt="Foto 4">
                         </div>
                     </div>
+                    {% endcache %}
 
                     <!-- Linha vertical -->
                     <div class="vr bg-primary"></div>
-              
-                    
+
+
                         <div class="col-lg-12 mx-5 ">
                             <h5 class="card-title">Voluntario</h5>
                             <div class="d-flex flex-column align-items-center">
@@ -128,12 +137,13 @@
                     <p class="paragrapher">Lorem ipsum dokkkkkklor sit   mmmmmmmmmmm amet, consectetur adipiscing elit, sed onsectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
                     <button name="register" class="btn-main mt-4">Apoiar</button>
                 </div>
-            </div> 
+            </div>
                 <!-- Linha vertical -->
                 <div class="d-flex" style="height: 200px;">
                     <div class="vr bg-primary"></div>
                 </div>
 
+                {% cache 3600 supporter_sidebar %}
                 <div class="col-lg-3 d-flex align-items-center justify-content-center  ">
                     <div>
                         <div class="photo">
@@ -152,49 +162,51 @@
                         </div>
                     </div>
                 </div>
+                {% endcache %}
+
             </div>
         </div>
     </section>
           <!-- ======= Newsletter ======= -->
     <section class="padd-section mb-5 mt-5">
-
+        {% cache 600 home_footer %}
         <div class="container">
             <div class="">
-    
+
             <h3 class="section-title text-center">Ultimas Notícias</h3>
             <p class="section-description text-center">Fique por dentro das últimas notícias .</p>
             </div>
 
             <div class="row bi-bi-train-freight-front-fill d-flex justify-content-around ">
-    
+
             <div class="col-md-8 col-lg-4">
                 <div class="text-justify d-flex flex-column justify-content-center align-content-center">
                 <a name="btn" href="#"><img src="{% static 'ong/img/lastnews/lastnewsft2.svg' %}" alt="img-1"></a>
                 <h4><a name="btn" href="#">Junte-se a nós na missão verde! Inscreva-se abaixo na nossa newsletter</a></h4>
-                <div class="date-more mt-4"> 
+                <div class="date-more mt-4">
                     <span >01, ago 2023</span>
                     <a class="btn-more " name="btn" href="#">saiba mais</a>
                 </div>
                 </div>
             </div>
-    
+
             <div class="col-md-6 col-lg-4">
                 <div class="text-justify d-flex flex-column justify-content-center align-content-center">
                 <a name="btn" href="#"><img src="{% static 'ong/img/lastnews/lastnewsft2.svg' %}"  alt="img-2"></a>
                 <h4><a name="btn" href="#">Planeta Sustentável:
                     Descubra como os ONGNautas estão fazendo a diferença</a></h4>
-                <div class="date-more"> 
+                <div class="date-more">
                     <span>01, ago 2023</span>
                     <a class="btn-more" name="btn" href="#">saiba mais</a>
                 </div>
                 </div>
             </div>
-    
+
             <div class="col-md-6 col-lg-4">
                 <div class="text-justify d-flex flex-column justify-content-center align-content-center">
                 <a name='btn' href="#"><img src="{% static 'ong/img/lastnews/lastnewsft3.svg' %}" class="" alt="img-3"></a>
                 <h4><a name='btn' href="#">Explorando a Natureza: As melhores trilhas ecológicas com os ONGNautas</a></h4>
-                <div class="date-more mt-1">  
+                <div class="date-more mt-1">
                     <span>01, ago 2023</span>
                     <a class="btn-more" name="btn" href="#">saiba mais</a>
                 </div>
@@ -202,8 +214,9 @@
             </div>
             </div>
         </div>
+        {% endcache %}
     </section>
-      
+
 
           <section  class="text-center mt-5 mb-5">
             <div class="">

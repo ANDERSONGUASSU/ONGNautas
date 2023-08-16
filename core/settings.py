@@ -122,6 +122,21 @@ elif PROFILE == 'prod':
         'PORT': config('POSTGRES_PORT', cast=int),
     }
 
+# Caching
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': config('CACHE_URL', cast=str)
+    }
+}
+
+if PROFILE in ['dev', 'prod']:
+    CACHES['default'] = {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': config('CACHE_URL', cast=str)
+    }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
