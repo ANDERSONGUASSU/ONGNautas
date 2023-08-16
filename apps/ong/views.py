@@ -12,7 +12,8 @@ from django.contrib.messages import constants
 def blog_view(request):
     if request.method == 'GET':
         posts = Post.objects.all()
-        return render(request, 'blog.html', {'posts': posts})
+        three_posts = posts[:3]
+        return render(request, 'blog.html', {'posts': three_posts})
 
 
 def blog_show_view(request, post_id):
@@ -21,7 +22,10 @@ def blog_show_view(request, post_id):
 
 
 def home_view(request):
-    return render(request, 'home.html')
+    if request.method == 'GET':
+        posts = Post.objects.all()
+        return render(request, 'home.html', {'posts': posts})
+
 
 
 @has_role_decorator('Admin')
