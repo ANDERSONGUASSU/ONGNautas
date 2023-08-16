@@ -60,18 +60,15 @@
     });
     </script>
     <script>
-      var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
-      var arrecadacao = [5000, 8000, 6000, 9000, 7500, 10000];
-      
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
           type: 'line',
           data: {
-              labels: meses,
+              labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
               datasets: [{
                   label: 'Arrecadação por Mês',
-                  data: arrecadacao,
-                  borderColor: 'rgb(75, 192, 192)',
+                  data: [5000, 8000, 6000, 9000, 7500, 10000],
+                  borderColor: 'green', // Definindo a cor da linha para verde
                   fill: false
               }]
           },
@@ -79,6 +76,33 @@
               scales: {
                   y: {
                       beginAtZero: true
+                  }
+              },
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Arrecadação Mensal',
+                      font: {
+                          size: 18
+                      },
+                      color: 'white' // Define a cor do título como branco
+                  },
+                  legend: {
+                      labels: {
+                          color: 'white' // Define a cor das legendas como branco
+                      }
+                  }
+              },
+              scales: {
+                  x: {
+                      ticks: {
+                          color: 'white'
+                      }
+                  },
+                  y: {
+                      ticks: {
+                          color: 'white'
+                      }
                   }
               }
           }
