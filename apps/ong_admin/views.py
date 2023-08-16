@@ -10,6 +10,7 @@ from .forms import ExpensesForm
 from ong.models import Project
 # Create your views here.
 
+
 def ong_admin_view(request):
     active_projects = Project.objects.filter(is_active=True)
     voluntary_projects_to_approve = VoluntaryProjectJunction.objects.filter(approved=False)
@@ -54,12 +55,6 @@ def register_admin(request):
                     )
         return render(request, 'ong_admin.html', {'form':register_form})
 
-
-def show_projects_to_approve(request):
-    projects_to_approve = VoluntaryProjectJunction.objects.filter(approved = False)
-    #TODO: nao sei oq renderizar aqui
-    return render(request, 'ong_admin.html', {'projects_to_approve':projects_to_approve})
-    
         
 @has_role_decorator('admin')
 def confirm_voluntary_participation(request, junction_id):
