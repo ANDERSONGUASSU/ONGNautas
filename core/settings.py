@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # Third Part
     'rolepermissions',
+    'django_celery_beat',
 
     # My Apps
     'authentication',
@@ -204,3 +205,16 @@ MESSAGE_TAGS = {
 # Role Permissions
 
 ROLEPERMISSIONS_MODULE = 'core.roles'
+
+# Celery
+
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TIMEZONE = 'America/Sao_Paulo'
+CELERY_ENABLE_UTC = True
+
+# Celery Beats
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

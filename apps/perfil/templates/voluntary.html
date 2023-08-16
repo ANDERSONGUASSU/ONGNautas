@@ -1,19 +1,18 @@
 <!-- area de ações no perfil de voluntários -->
 {% extends "base/base_perfil.html" %}
+{% load static %}
 
-{% block title %}Perfil de Voluntário{% endblock title %}
+{% block 'title' %}Perfil de Voluntário{% endblock 'title' %}
 
-{% block css %}
-  <link rel="stylesheet" href="{% static 'perfil/css/voluntary.css' %}">
-  <link rel="stylesheet" href="{% static 'perfil/css/index.css' %}">
-{% endblock css %}
+{% comment %} {% block 'css' %}{% static 'perfil/css/voluntary.css' %}{% endblock 'css' %} {% endcomment %}
+{% block 'css1' %}{% static 'perfil/css/index.css' %}{% endblock 'css1' %}
 
 {% block scripts %}
   
   <script src="{% static 'perfil/js/voluntary.js' %}"></script>
 {% endblock scripts %}
 
-{% block body %}
+{% block 'body' %}
 <!-- ações (projetos)-->
 <div class="card-group">
   <!--card test. amanha irei fazer a renderização das ações aqui-->
@@ -107,4 +106,4 @@
       </div>
   </div>
   
-  {% endblock body %}
+  {% endblock 'body' %}
