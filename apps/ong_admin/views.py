@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from rolepermissions.decorators import has_role_decorator
+from rolepermissions.roles import assign_role
+
 from ong.forms import ProjectForm
 from authentication.forms import RegisterForm
-from rolepermissions.roles import assign_role
 from perfil.models import VoluntaryProjectJunction
 # Create your views here.
 
