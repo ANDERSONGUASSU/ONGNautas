@@ -95,6 +95,9 @@ img {
 }
 
 .content-blog span {
-  float: left;
+  
   font-size: 12px;
+}
+.title-card{
+  min-height: 8rem;
 }
