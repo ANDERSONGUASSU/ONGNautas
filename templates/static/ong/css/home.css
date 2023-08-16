@@ -177,6 +177,16 @@ img {
   color: var(--login-title-color);
   text-decoration: none;
 }
+.block-blog {
+  margin-bottom: 30px;
+}
+.block-blog img {
+  width: 100%;
+  height: 190px
+}
+.title-card{
+  min-height: 8rem;
+}
 @media (max-width: 768px) {
   .background {
     width: 100%;
@@ -240,4 +250,5 @@ img {
   .form-control {
    margin:0 5px;
   }
+  
 }
