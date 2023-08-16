@@ -6,7 +6,7 @@ from rolepermissions.decorators import has_role_decorator
 
 def index_view(request):
     user = request.user
-    return render(request, 'index.html', {'username':user.name, 'email':user.email})
+    return render(request, 'index.html', {'username':user.first_name, 'email':user.email})
 
 
 def voluntary_view(request):
