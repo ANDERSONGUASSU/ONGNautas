@@ -8,16 +8,12 @@
 
     <div class="container">
         <img src="{{ posts.image.url }}" class="card-img-top" alt="{{ posts.title }}">
-        <h2>{{ posts.title }}</h2>
-        <p>{{ posts.text }}</p>
+        <h2 class="section-title">{{ posts.title }}</h2>
+        <p class="paragrapher">{{ posts.text }}</p>
 
     </div>
 
-<pre>
-{{ post }}
-{{ post.title }}
-{{ post.text }}
-</pre>
+
 
 {% endblock 'body' %}
 </body>

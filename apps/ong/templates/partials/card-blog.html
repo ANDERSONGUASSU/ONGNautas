@@ -4,11 +4,13 @@
 {% for post in posts %}
 <div class="col-md-6 col-lg-4">
     <div class="block-blog text-left">
-        <a href="#"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
-        <div class="content-blog">
-            <h4><a href="#">{{ post.title }}</a></h4>
-            <span>{{ post.date }}</span> <br>
-            <a class="float-end btn m-5" href="{% url 'blog_show' post.id %}" role="button">Saiba Mais</a>
+        <a href="{% url 'blog_show' post.id %}"><img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"></a>
+        <div class="content-blog text-left">
+            <div class="title-card">
+                <a href="{% url 'blog_show' post.id %}">{{ post.title }}</a><br>
+            </div>
+            <span>{{ post.date }}</span>
+            <a class="btn mt-3" href="{% url 'blog_show' post.id %}" role="button">Saiba Mais</a>
         </div>
     </div>
 </div>
