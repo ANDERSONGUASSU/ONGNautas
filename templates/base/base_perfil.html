@@ -8,8 +8,9 @@
     {% include 'partials/head.html' %}
 
     <title>{% block 'title' %}{% endblock 'title' %} | ONGNautas</title>
-
-    <link rel="stylesheet" href="{% block 'css' %}{% static 'geral/css/base_perfil.css' %}{% endblock 'css' %}" />
+    <link rel="stylesheet" href="{% static 'geral/css/base_perfil.css' %}">
+    <link rel="stylesheet" href="{% block 'css' %}{% endblock 'css' %}" />
+    <link rel="stylesheet" href="{% block 'css1' %}{% endblock 'css1' %}" />
   </head>
   <body style=" background-color: black;">
     {% include 'partials/header-perfil.html' %} {% block content %}
