@@ -18,12 +18,14 @@ def register_projects(request):
             try:
                 project_form.save()
                 messages.add_message(request, constants.SUCCESS, 'Ação criada com sucesso!')
+                return render(request, 'ong_admin.html')
             except:
                 messages.add_message(
                         request, 
                         constants.ERROR, 
                         'Houve algum erro. Tente novamente mais tarde.'
                     )
+                return render(request, 'ong_admin.html', {'form':project_form})
 
 
 @has_role_decorator('admin')
@@ -36,12 +38,14 @@ def register_admin(request):
 
                 assign_role(user, 'admin')
                 messages.add_message(request, constants.SUCCESS, 'Administrador criado com sucesso!')
+                return render(request, 'ong_admin.html')
             except:
                 messages.add_message(
                         request, 
                         constants.ERROR, 
                         'Houve algum erro. Tente novamente mais tarde.'
                     )
+                return render(request, 'ong_admin.html', {'form':register_form})
 
 
 def show_projects_to_approve(request):
@@ -55,8 +59,17 @@ def confirm_voluntary_participation(request):
     project = request.GET.get('project')
     voluntary = request.GET.get('voluntary')
     project_to_approve = VoluntaryProjectJunction.objects.filter(project=project).filter(voluntary=voluntary)
-    project_to_approve.approved = True
-    project_to_approve.save()
+    try:
+        project_to_approve.approved = True
+        project_to_approve.save()
+        messages.add_message(request, constants.SUCCESS, 'Projeto aprovado com sucesso!')
+    except:
+        messages.add_message(
+            request, 
+            constants.ERROR, 
+            'Houve algum erro. Tente novamente mais tarde.'
+        )
+        return render(request, 'ong_admin.html')
 
 
 @has_role_decorator('admin')
