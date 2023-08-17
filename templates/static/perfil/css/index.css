@@ -66,3 +66,32 @@
   letter-spacing: 2px;
   color: var(--home-titles);
 }
+.card {
+  background-image: linear-gradient(
+    to left bottom,
+    #00a651,
+    #3baf4c,
+    #5ab748,
+    #74bf43,
+    #8dc63f
+  );
+  
+  
+  color: #fff;
+  box-shadow: 10px 10px 10px rgba(0, 100, 0, 0.5); 
+  }
+  .card h2{
+    color: #fff;
+    
+  }
+
+
+.card-content {
+    text-align: center;
+    padding: 1rem;
+    
+  }
+  .card-link {
+    text-decoration: none; 
+    color: inherit; 
+  }
