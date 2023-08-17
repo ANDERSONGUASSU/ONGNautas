@@ -30,6 +30,6 @@ while : ; do
     fi
 done
 
-docker compose -f "$FILE" down
+docker compose -f "$FILE" down --remove-orphans
 
 echo "Serviços encerrados."
