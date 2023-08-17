@@ -1,5 +1,16 @@
 <!--Esboço admin. amanha focarei em termina-lo-->
-<div class="container-perfil-actions actions">
+{% extends "base/base_perfil.html" %}
+{% load static %}
+
+{% block 'title' %}Perfil de Admin{% endblock 'title' %}
+
+{% comment %} {% block 'css' %}{% static 'perfil/css/voluntary.css' %}{% endblock 'css' %} {% endcomment %}
+{% block 'css1' %}{% static 'perfil/css/index.css' %}{% endblock 'css1' %}
+
+
+
+{% block 'body' %} 
+<div class=" container-xl container-perfil-actions actions">
     <h6 class="category-title">Permissões de Voluntariados</h6>
     <div class="">
       <div class="card mb-3" style="max-width: 540px;">
@@ -20,7 +31,7 @@
     </div>
   </div>
   
-  <div class="container-perfil-actions">
+  <div class="container-xl container-perfil-actions">
     <h6 class="category-title">Registros</h6>
     <div class="btn-group">
       <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,4 +48,5 @@
   </div>
     
   </div>
+  {% endblock  %}
   
