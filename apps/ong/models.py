@@ -13,6 +13,7 @@ class Project(models.Model):
     description = models.TextField(_('description'))
     address = models.CharField(_('address'), max_length=50)
     image = models.ImageField(_('image'), upload_to='projects')
+    created_at = models.DateField(_('created at'), default=timezone.now)
     is_active = models.BooleanField(_('is active'), default=True)
     amount_spent = models.DecimalField(_('amount spent'), max_digits=6, decimal_places=2, default=0.0)
     amount_expected = models.DecimalField(_('amount spent'), max_digits=6, decimal_places=2, default=0.0)

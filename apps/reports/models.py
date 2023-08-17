@@ -1,5 +1,9 @@
 from django.db import models
 from authentication.validators import cep_validator
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+
+import datetime
 
 
 class Report(models.Model):
@@ -21,3 +25,16 @@ class Report(models.Model):
         verbose_name_plural = 'Denúncias'
 
 
+class Sheet(models.Model):
+
+    file = models.FileField(_('file'), upload_to='sheets')
+    
+    date = models.DateField(_('date'), default=timezone.now() - datetime.timedelta(days=timezone.now().day))
+
+    def __str__(self) -> str:
+        return f'Relação de {self.date.strftime("%m/%Y")}'
+    
+    class Meta:
+
+        verbose_name = _('Sheet')
+        verbose_name_plural = _('Sheets')

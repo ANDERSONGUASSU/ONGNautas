@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Report
+from .models import Report, Sheet
 
 
 @admin.register(Report)
@@ -16,3 +16,6 @@ class ReportAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
     readonly_fields = ['title', 'description', 'cep', 'address', 'complement', 'evidence_image']
+
+
+admin.site.register(Sheet)

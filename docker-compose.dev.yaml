@@ -76,6 +76,26 @@ services:
     networks:
       - django-network
 
+  beat:
+    container_name: dev-beat-worker
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    env_file:
+      - dev.env
+    volumes:
+      - ./:/app
+    command: celery -A core beat -l INFO
+    depends_on:
+      db:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    networks:
+      - django-network
+
   worker:
     container_name: dev-worker
     build:
