@@ -58,6 +58,11 @@
               <a class="nav-link scrollto" href="{% url 'index' %}">
                 <button class="nav-link btn-login mx-3">Perfil</button>
               </a>
+              
+              {% else %}
+              <a href="{% url 'login' %}">
+                <button class="nav-link btn-login mx-3">Login</button>
+              </a>
             {% endif %}
           </li>
         </ul>
