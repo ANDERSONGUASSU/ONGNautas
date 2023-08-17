@@ -109,6 +109,7 @@ span {
 
 button {
   border: groove #66a26141;
+
   background-image: linear-gradient(
     to left bottom,
     #00a651,
@@ -256,6 +257,7 @@ button {
 }
 .btn {
   border: groove #66a26141;
+  border-radius: 3rem;
   background-image: linear-gradient(
     to left bottom,
     #00a651,
