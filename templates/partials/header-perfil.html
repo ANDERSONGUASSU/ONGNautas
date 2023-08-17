@@ -64,20 +64,25 @@
           {% endif %} {% if user.is_supporter %}
           <!--  apoiadores -->
           <li class="nav-item">
-            <a class="nav-link scrollto" href="#">Minhas Ações</a>
+            <a class="nav-link scrollto" href="{% url 'voluntary' %}">Minhas Ações</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link scrollto" href="#">Doar</a>
+            <a class="nav-link scrollto" href="{% url 'supporter' %}">Doar</a>
           </li>
+          
           {% endif %} {% endif %}
           {% endif %}
 
           <!--logout sempre será exibido em todas as opçoes! -->
           <li class="nav-item">
-            <a class="nav-link scrollto" href="#" >Logout</a>
+              <a class="nav-link scrollto" href="{% url 'logout' %}" >Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link scrollto" href="{% url 'index' %}">Perfil</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </header>
+

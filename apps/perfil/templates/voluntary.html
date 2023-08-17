@@ -14,6 +14,12 @@
 
 {% block 'body' %}
 <!-- ações (projetos)-->
+<div class= "category-vol-line">
+<h6 class="category-title">Ações</h6>
+<button id="btn_register_action" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegisterAction">
+  Registrar Ação
+</button>
+</div>
 <div class="card-group">
   <!--card test. amanha irei fazer a renderização das ações aqui-->
         <div class="card-actions">
@@ -46,15 +52,13 @@
     <div>
       <div class="category-vol-line">
         <h6 class="category-title">Meus voluntariados</h6>
-        <button id="btn_register_action" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegisterAction">
-            Registrar Ação
-        </button>
+       
     </div>
     
      
       <hr class="mt-0 mb-4" />
       <div class="row pt-1">
-        <div class="">
+        <div class="my-v-text">
           <p class="text-center">
             Voce ainda não participou de nenhuma ação!
             Quer registrar seu ultimo volúntariado? Clique em registrar ação
@@ -63,47 +67,7 @@
         </div>
       </div>
     </div>
+    
+    {% include 'partials/modal_become_supporter.html' %}
 
-
-<!-- Modal para registro de voluntário-->
-    <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="modalRegisterLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="modalRegisterActionLabel">Registrar Ação Voluntária</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-              </div>
-              <div class="modal-body">
-                  <!-- formulário para registrar a ação -->
-                  <form action="" id="formRegisterAction" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                      <!-- Anexo de foto -->
-                      <div class="mb-3">
-                        <label for="img" class="form-label">Anexar Foto</label>
-                        <input type="file" class="form-control" id="img" name="img">
-                      </div>
-                      <!-- Dropdown ação  -->
-                      <div class="mb-3">
-                          <label for="project" class="form-label">Escolher Ação</label>
-                          <select class="form-select" id="project" name="project">
-                              <option value="project1">Ação 1</option>
-                              <option value="project2">Ação 2</option>
-                              
-                          </select>
-                      </div>
-                      <!--  horas trabalhadas -->
-                      <div class="mb-3">
-                          <label for="hours_worked" class="form-label">Horas Trabalhadas</label>
-                          <input type="number" class="form-control" id="hours_worked" name="hours_worked">
-                      </div>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary" id="send_voluntary_register">Enviar</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  {% endblock 'body' %}
+    {% endblock 'body' %}
