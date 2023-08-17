@@ -6,10 +6,25 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.messages import constants
 
+from django.views.decorators.cache import cache_page
+
+from django.db.models import Sum
+
+from rolepermissions.checkers import has_role
+
 from .forms import ReportsForm
 
 from django.core.paginator import Paginator
 from .models import Report
+
+from ong_admin.models import Expenses
+from ong.models import Project
+from authentication.models import Voluntary, User
+
+from django.conf import settings
+
+import datetime
+import pytz
 
 
 def denouncement_view(request: HttpRequest):
@@ -75,5 +90,22 @@ def delete_report(request, report_id):
     return redirect('denouncement')
 
 
+@cache_page(60 * 5)
 def transparency_view(request):
-    return render(request, 'transparency.html')
+    total_expenses = Expenses.objects.aggregate(total=Sum('amount_spent'))['total'] or 0
+    total_expenses_with_projects = Project.objects.aggregate(total=Sum('amount_spent'))['total'] or 0
+
+    users = User.objects.all()
+    volunteers_list = list(filter(lambda x: has_role(x, 'voluntary'), users))
+    supporters_list = list(filter(lambda x: has_role(x, 'supporter'), users))
+
+    projects = Project.objects.count() or 0
+
+    context = {
+        'expenses': total_expenses_with_projects + total_expenses,
+        'volunteers': len(volunteers_list),
+        'supporters': len(supporters_list),
+        'projects': projects
+    }
+
+    return render(request, 'transparency.html', context)
