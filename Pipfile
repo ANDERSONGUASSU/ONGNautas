@@ -12,6 +12,8 @@ django-role-permissions = "*"
 redis = "*"
 celery = "*"
 django-celery-beat = "*"
+pandas = "*"
+openpyxl = "*"
 
 [dev-packages]
 

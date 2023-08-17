@@ -1,0 +1,41 @@
+<!-- Registered Files -->
+<section class="padd-section">
+  <div class="container">
+    <h2 class="margin section-title">Relação Mensal de Gastos</h2>
+  </div>
+  <table class="table table container">
+    <thead>
+      <tr class="card-title text-center mb-4">
+        <th>Data</th>
+        <th>Planilha</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      {% for sheet in page_obj %}
+        <tr>
+          <td style="color: white;">{{ sheet.date }}</td>
+          <td><a href="{{ sheet.file.url }}" target="_blank">Planilha</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</section>

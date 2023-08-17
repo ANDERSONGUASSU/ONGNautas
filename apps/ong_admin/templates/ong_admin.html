@@ -10,43 +10,67 @@
 
 
 {% block 'body' %} 
-<div class=" container-xl container-perfil-actions actions">
-    <h6 class="category-title">Permissões de Voluntariados</h6>
-    <div class="">
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="..." class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Registro de voluntariado de, {{username}}</h5>
-              <p class="card-text">Projeto Amazonia Verde</p>
-              <p class="card-text"><small class="text-body-secondary">Horas trabalhadas: <span>{{hours_worked}}</span></small></p>
-            </div>
-          </div>
+<div class="container-xl container-perfil-actions actions">
+  <h6 class="category-title">Permissões de Voluntariados</h6>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Registro de voluntariado de, {{username}}</h5>
+          <p class="card-text">Projeto Amazonia Verde</p>
+          <p class="card-text"><small class="text-body-secondary">Horas trabalhadas: <span>{{hours_worked}}</span></small></p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
+<div class="container-xl container-perfil-actions">
+  <h6 class="category-title">Registros</h6>
+  <div class="row">
+    <div class="col-md-3">
+      <a href="#" class="card-link">
+        <div class="card">
+          <div class="card-content">
+            <h2 class="section-description"><i class="bi bi-person-gear"></i> Criar um Admin</h2>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#" class="card-link">
+        <div class="card">
+          <div class="card-content">
+            <h2 class="section-description"><i class="bi bi-database-fill-down"></i> Registrar Despesas</h2>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#" class="card-link">
+        <div class="card">
+          <div class="card-content">
+            <h2 class="section-description"><i class="bi bi-card-checklist"></i> Aprovar Projetos</h2>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#" class="card-link">
+        <div class="card">
+          <div class="card-content">
+            <h2 class="section-description"><i class="bi bi-building-add"></i> Registar Projetos</h2>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
+</div>
+
+  {% endblock 'body' %}
   
-  <div class="container-xl container-perfil-actions">
-    <h6 class="category-title">Registros</h6>
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Escolha o registro
-      </button>
-      <ul class="dropdown-menu">
-       <li>criar admin</li>
-       <li>registrar despesas</li>
-       <li>aprovar projetor de voluntarios</li>
-       <li>registrar projetos</li>
-      </ul>
-    </div>
-   
-  </div>
-    
-  </div>
-  {% endblock  %}
-  
+  </body>
+  </html>

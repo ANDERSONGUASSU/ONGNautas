@@ -11,7 +11,7 @@
 {% endblock 'scripts' %} 
 
 {% block 'body' %}
-
+<!--galera, deu ruim no meu docker e eu acabei perdendo um pouco de tempo com isso. vou acordar cedo amanha e resolver o que falta-->
 <section class="vh-100">
   <div class="container-xl py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -23,9 +23,11 @@
               class="aside-user col-md-4 gradient-custom text-center"
               style="border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem;"
             >
+            
             <div class="text-center mt-4">
-              <button class="btn btn-primary" onclick="window.location.href='{% url 'voluntary' %}'">Perfil de Voluntário</button>
-              <button class="btn btn-secondary" onclick="window.location.href='{% url 'supporter' %}'">Perfil de Apoiador</button>
+              <button class="btn-main " onclick="window.location.href='{% url 'voluntary' %}'">Perfil de Voluntário</button>
+    
+              <button class="btn-main" onclick="window.location.href='{% url 'supporter' %}'">Perfil de Apoiador</button>
             </div>          
             </div>
             <!-- Informações do Usuário -->

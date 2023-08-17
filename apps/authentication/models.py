@@ -36,6 +36,7 @@ class User(AbstractUser):
     cep = models.CharField(max_length=11, blank=False, default='Sem CEP', validators=[cep_validator, no_whitespaces])
     address = models.CharField(max_length=64, blank=False, default='Não definido')
     complement = models.CharField(max_length=24, blank=True)
+    created_at = models.DateField(default=timezone.now)
      
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'

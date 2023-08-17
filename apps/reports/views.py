@@ -1,12 +1,9 @@
 from django.http import HttpRequest
 
-from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib import messages
 from django.contrib.messages import constants
-
-from django.views.decorators.cache import cache_page
 
 from django.db.models import Sum
 
@@ -15,16 +12,11 @@ from rolepermissions.checkers import has_role
 from .forms import ReportsForm
 
 from django.core.paginator import Paginator
-from .models import Report
+from .models import Report, Sheet
 
 from ong_admin.models import Expenses
 from ong.models import Project
-from authentication.models import Voluntary, User
-
-from django.conf import settings
-
-import datetime
-import pytz
+from authentication.models import User
 
 
 def denouncement_view(request: HttpRequest):
@@ -90,7 +82,6 @@ def delete_report(request, report_id):
     return redirect('denouncement')
 
 
-@cache_page(60 * 5)
 def transparency_view(request):
     total_expenses = Expenses.objects.aggregate(total=Sum('amount_spent'))['total'] or 0
     total_expenses_with_projects = Project.objects.aggregate(total=Sum('amount_spent'))['total'] or 0
@@ -101,11 +92,17 @@ def transparency_view(request):
 
     projects = Project.objects.count() or 0
 
+    sheets = Sheet.objects.all()
+    paginator = Paginator(sheets, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'expenses': total_expenses_with_projects + total_expenses,
         'volunteers': len(volunteers_list),
         'supporters': len(supporters_list),
-        'projects': projects
+        'projects': projects,
+        'page_obj': page_obj
     }
 
     return render(request, 'transparency.html', context)

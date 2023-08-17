@@ -16,7 +16,10 @@
 }
 body{
     background-color: black;
+    color:#fff;
+    text-align: center;
 }
+
 .footer .footer-logo .navbar-brand {
     color: #fff;
     display: inline-block;
