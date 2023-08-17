@@ -2,13 +2,7 @@
    max-width: 1200px;
    
 }
-.aside-user{
-  background-image: url("/static/perfil/img/perfil_aside.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-   
-}
+
 .button-vol-sup-group{
   display: flex;
   flex-direction: column;

@@ -109,6 +109,7 @@ span {
 
 button {
   border: groove #66a26141;
+
   background-image: linear-gradient(
     to left bottom,
     #00a651,
@@ -253,6 +254,33 @@ button {
   text-align: center;
   letter-spacing: 5px;
   
+}
+.btn {
+  border: groove #66a26141;
+  border-radius: 3rem;
+  background-image: linear-gradient(
+    to left bottom,
+    #00a651,
+    #3baf4c,
+    #5ab748,
+    #74bf43,
+    #8dc63f
+  );
+
+  color: var(--placeholder-text);
+}
+
+.btn-login {
+  text-align: center;
+  width: 100px;
+  letter-spacing: 3px;
+  border-radius: 2.5rem;
+  font-size: 0.6rem;
+  font-family: "Lastica";
+  font-weight: 800;
+  color: var(--login-title-color) !important;
+  transition: 0.4s;
+  color: var(--login-title-color) !important;
 }
 .btn-main {
   font-size: 1rem;
